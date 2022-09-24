@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+  {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<style>
+  .footer {
+  margin-top: auto;
+  margin-left:0 ;
+  background-color: black;
+  color: white;
+  
+}
+.footer-row
+{
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 80px;
+  
+  padding: 16px;
+}
+.footer-col
+{
+  width: 25%;
+  padding: 0 15px;
+}
+.footer-col h3{
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 30px;
+}
+fieldset{
+  width: 100px;
+  height: 300px;
+  background-color: blueviolet;
+}
+
+body{
+  background-image: url("https://sreesaradavidyalaya.edu.in/wp-content/uploads/2020/12/l1.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+</style>
+
+<title>Ecommerce</title>
+</head>
+<body>
+
+  <div class="container-fluid">
+    
+
+    <div class="bs-example">
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        <a href="/" class="navbar-brand" style="color:yellow;"> Library Management</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+          <div class="navbar-nav">
+            <a href="{% url 'load_adminhome' %}" class="nav-item nav-link active">Home</a>
+  
+            {% comment %} <a href="/faculty/" class="nav-item nav-link">Faculty</a> {% endcomment %}
+            
+            <a href="{% url 'load_book' %}" class="nav-item nav-link">add Book</a>
+            <a href="{% url 'bookview' %}" class="nav-item nav-link">view Books</a>
+            <a href="{% url 'load_category' %}" class="nav-item nav-link">add category</a>
+            <a href="{% url 'viewcategory' %}" class="nav-item nav-link">view category</a>
+            <a href="{% url 'viewuser' %}" class="nav-item nav-link">view Users</a>
+            <a href="{% url 'load_issuebook' %}" class="nav-item nav-link">Issue Books</a>
+            <a href="{% url 'load_issuedbook' %}" class="nav-item nav-link">view Issued Books</a>
+  
+          </div>
+  
+          <div class="navbar-nav">
+            <a href="/aboutus" class="nav-item nav-link">About Us</a>
+            <a href="{% url 'user_logout' %}" class="nav-item nav-link">Logout</a>
+          </div>
+  
+  
+  
+  
+        </div>
+      </nav>
+    </div>
+
+    <br>
+    
+    {% for  msg in messages %}
+    <h2 style="color: blueviolet; text-align:center;">{{ msg }}</h2>
+   
+    {% endfor %} 
+    
+
+    
+
+    
+</body>       
+        
+          
+   

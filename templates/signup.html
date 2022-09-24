@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ <style>
+     fieldset
+    {
+      margin-top: 0px;
+      width: 600px;
+       height: 850px;
+        background-color: lavender;
+        font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+    }
+    body{
+      background-color: burlywood;
+    }
+  </style>
+</head>
+<body>
+    
+  <div class="container-fluid">
+    
+
+    <div class="bs-example">
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        <a href="/" class="navbar-brand" style="color:yellow;"> Library Management</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+          <div class="navbar-nav">
+  
+            {% comment %} <a href="/faculty/" class="nav-item nav-link">Faculty</a> {% endcomment %}
+            
+            <a href="{% url 'load_home' %}" class="nav-item nav-link ">Home</a>
+            <a href="{% url 'load_signup' %}" class="nav-item nav-link active">Signup</a>
+            <a href="{% url 'load_signin' %}" class="nav-item nav-link">Login</a>
+  
+          </div>
+  
+          <div class="navbar-nav">
+            <a href="/aboutus" class="nav-item nav-link">About Us</a>
+            <a href="contactus" class="nav-item nav-link">Contact Us</a>
+          </div>
+  
+  
+  
+  
+        </div>
+      </nav>
+    </div><br><br><br><br>
+
+    <center>
+        <fieldset>
+    <div class="container fluid">
+        <h3>SIGN UP</h3>
+          <form method="post" action="{% url 'signup' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>First name</label><br>
+                <input type="text" class="form-control" id="uname" placeholder="First name" name="fname" required>
+                </div>
+              
+                <div class="form-group col-md-6">
+                  <label for="uname">Last name</label><br>
+                  <input type="text" class="form-control" id="uname" placeholder="Lastname" name="lname" required>
+                  </div>
+              </div>
+              <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="uname">Address</label><br>
+                <input type="text" class="form-control" name="address"></textarea><br>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="mblno">Mobileno:</label>
+                    <input type="text" class="form-control" id="mobile"  name="mobile" required>
+                    
+                  </div>
+                  
+            </div>
+      
+              <div class="form-row">
+                
+                <div class="form-group col-md-6">
+                  <label for="email">Email id:</label>
+                  <input type="text" class="form-control" id="email" placeholder="Email id" name="email" required>
+                  
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="Username">Username:</label>
+                  <input type="text"  class="form-control" id="uname" placeholder="username" name="uname" required>
+                  </div>
+              </div> 
+                <div class="form-group">
+                  <label for="pwd">Password:</label>
+                  <input type="password" class="form-control" id="pwd" name="pswd" required>
+                  
+                </div>
+                <div class="form-group">
+                  <label for="cfpwd">Confirm Password:</label>
+                  <input type="password" class="form-control" id="cfpwd" placeholder="Re enter password" name="cfpswd" required>
+                  
+                </div><br>
+                <div class="form-row">
+                <div class="form-group ">
+                  <label for="gender" style="margin-left: 10px;">Gender:</label>
+                  <input type="radio" name="gender"  value="male" style="margin-left: 30px;">
+                  <label for="male">Male</label>
+
+                  <input type="radio" name="gender" value="female" >
+                  <label for="female">Female</label>
+
+                  <input type="radio" name="gender" value="other" >
+                  <label for="other">Other</label>
+
+                </div><br><br>
+                <div class="form-group col-md-8" ><br>
+                  <label for="mblno">Designation</label>
+                  <input type="text"   class="form-control" id="desig"  name="designation" required >
+                  
+                </div>
+                <div class="form-group">
+                  <label for="photo">Photo</label>
+              <input type="file" name="file" class="form-control mt-6" accept="image/*">
+              </div>  
+                </div>
+                
+                       
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <br>
+            <label>Already have an account</label>
+            <a href="{% url 'load_signin' %}">LOG IN</a>
+          </fieldset></center> 
+      </div></body>

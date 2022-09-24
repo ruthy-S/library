@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>users</title>
+    <style>
+        h1
+        {
+            text-align: center;
+            color: blue;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+       
+    </style>
+    
+</head>
+    <body>
+        <div class="container-fluid">
+    
+
+            <div class="bs-example">
+              <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+                <a href="/" class="navbar-brand" style="color:yellow;"> Library Management</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+          
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                  <div class="navbar-nav">
+                    <a href="{% url 'userhomepage' %}" class="nav-item nav-link ">Home</a>
+          
+                    {% comment %} <a href="/faculty/" class="nav-item nav-link">Faculty</a> {% endcomment %}
+                    
+                    
+                    <a href="{% url 'userbookview' %}" class="nav-item nav-link ">view available Books</a>
+                    
+                    <a href="{% url 'profile' %}" class="nav-item nav-link ">Profile</a>
+                    <a href="{% url 'load_userissuedbook' %}" class="nav-item nav-link active">view Issued Books</a>
+          
+                  </div>
+          
+                  <div class="navbar-nav">
+                    <a href="/aboutus" class="nav-item nav-link">About Us</a>
+                    <a href="{% url 'user_logout' %}" class="nav-item nav-link">Logout</a>
+                  </div>
+          
+          
+          
+          
+                </div>
+              </nav>
+            </div>
+        
+            <br><br><br><br>
+        
+        
+        <h1>Issued books Details...
+        </h1>
+        <table class="table table-striped table-bordered table-sm">
+            <thead style="background-color:rgb(175, 111, 15) ;" >
+                <tr>
+                    <th>ID</th>
+                    
+                    <th>USER ID</th>
+                    <th>BOOK NAME</th>
+                    <th>AUTHOR</th>
+                    <th>ISSUE DATE</th>
+                    <th>RETURN DATE</th>
+                    <th>FINE</th>
+                    
+                    
+
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for i in li %}
+               
+                
+                
+                   
+                    <tr>
+                        <td>{{ i.0 }}</td>
+                        
+                        <td>{{ i.1 }}</td>
+                        <td>{{ i.2 }}</td>
+                        <td>{{ i.3 }}</td>
+                        <td>{{ i.4 }}</td>
+                        <td>{{ i.5 }}</td>
+                        <td>{{ i.6 }}</td>
+                        
+                        
+                
+                        
+                    </tr>
+              
+                    
+                {% endfor%}
+                
+                
+            </tbody>
+        </table>
+    </body>

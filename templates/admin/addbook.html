@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>product</title>
+</head>
+<style>
+    .form-box {
+        position:relative; 
+        left:200px; 
+        top: -150px;
+        
+        right: -150px;
+        margin-top: 200px;
+        color:white;
+        background-color: rgb(62, 123, 123); 
+        
+      }
+      .form-box form input{
+        width:100%;
+        height:30px;
+        margin-bottom:10px;
+        border: 1px solid #000;
+        
+        
+        
+      }
+      .form-box form button{
+        width:100px;
+        height:30px;
+        border:none;
+        background-color:rgb(11, 205, 69);
+        font-size:16px;
+        color:#fff;
+        font-family:Lato;
+        margin-left:300px;
+        border-radius: 25px;
+      }
+      
+      
+      .form-box form label{
+       font-family: Georgia, "Times New Roman", Times, serif;
+       font-size: 20px;
+       color:rgb(17, 16, 16);
+       height: 40px;
+       width: 50%;
+       clear: both;
+       
+      
+      }
+     
+      .container{
+        text-align: center;
+        
+      }
+      body{
+        background-color: rgb(62, 123, 123);
+        color: white;
+      }
+      
+</style>
+    <body>
+        
+            <fieldset >
+            <div class="container-fluid">
+                <div class="bs-example">
+                    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+                      <a href="/" class="navbar-brand" style="color:yellow;"> Library Management</a>
+                      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                
+                      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav">
+                          <a href="{% url 'load_adminhome' %}" class="nav-item nav-link ">Home</a>
+                
+                          {% comment %} <a href="/faculty/" class="nav-item nav-link">Faculty</a> {% endcomment %}
+                          
+                          <a href="{% url 'load_book' %}" class="nav-item nav-link  active">add Book</a>
+                          <a href="{% url 'bookview' %}" class="nav-item nav-link">view Books</a>
+                          <a href="{% url 'load_category' %}" class="nav-item nav-link">add category</a>
+                          <a href="{% url 'viewcategory' %}" class="nav-item nav-link">view category</a>
+                          <a href="{% url 'viewuser' %}" class="nav-item nav-link">view Users</a>
+                          <a href="{% url 'load_issuebook' %}" class="nav-item nav-link">Issue Books</a>
+                          <a href="{% url 'load_issuedbook' %}" class="nav-item nav-link">view Issued Books</a>
+                
+                        </div>
+                
+                        <div class="navbar-nav">
+                          <a href="/aboutus" class="nav-item nav-link">About Us</a>
+                          <a href="{% url 'user_logout' %}" class="nav-item nav-link">Logout</a>
+                        </div>
+                
+                
+                
+                
+                      </div>
+                    </nav>
+                  </div>
+              
+                  <br><br><br>
+                  <div class="bg-img">
+                    <div class="form-box">
+                    <div class="wrapper">
+                
+        <h1 style="margin: left 200px;">Add book</h1>
+        <br><br>
+        <form method="post" action="{% url 'add_book' %}" enctype="multipart/form-data" style="margin: right 300px; ;">
+
+            {% csrf_token %}
+            <div class="form-row">
+            <div class="form-group col-md-6">
+            <label>Book name:</label>
+            <input type="text" name="bname" class="form-control mt-3">
+            </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+            <label>Book description</label>
+            <textarea rows="3" cols="15" name="description" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+            <label>Author</label>
+            <input type="text" name="author" class="form-control">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+            <label>Publication</label>
+            <input type="text" name="publication" class="form-control ">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+            <label>Enter product quantity:</label>
+            <input type="number" name="quantity" class="form_control">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+            <label>Enter product price:</label>
+            <input type="number" name="price">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Category:</label>
+            <select class="form-control" name="select">
+                {% for category in categorys %}
+                <option value="{{ category.id }}">{{ category.category_name }}[{{category.language}}]</option>
+                {% endfor %}
+            </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Book image:</label>
+            <input type="file" name="file" class="form-control mt-3" accept="image/*">
+
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+            <button type="submit" class="btn btn-outline-info">submit</button>
+                </div>
+            </div>
+        </form>
+           
+        
+            </div>
+                    </div></div></div>
+        </fieldset>
+        
+    </body>
+  <!--      
+        <select class="form-control" name="sel">
+            {% for course in courses %}
+            <option value="{{ category.id }}">{{ category.category_name}}</option>
+            {% endfor %}
+        </select>
+
+
+############################
+
+        <select class="form-control" name="select">
+                {% for category in categorys %}
+                <option value="{{ category.id }}">{{ category.category_name}}</option>
+                {% endfor %}
+            </select>
+    -->
+  

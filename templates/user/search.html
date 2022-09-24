@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<head>
+  {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+<title>Ecommerce</title>
+</head>
+<body>
+    
+  <nav class="navbar navbar-expand-md navbar-dark " style="background-color: rgb(74, 72, 73);">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#"></a>
+  
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+   <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+    
+    </ul>
+   <!-- Navbar links -->
+   <div class="collapse navbar-collapse nav justify-content-end" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      
+ <!--  <ul class="nav justify-content-end">  -->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile' %}" >Home</a>
+      </li>
+
+    </ul>
+
+  </div>
+            </nav>
+    <h4 class="text-center ed-head">Books in Library</h4>
+    <hr class="my-4">
+
+    <div class="row">
+        <div class="col-lg-3 mx-auto">
+          <div class="list-group">
+            <p><b>Categorylist</b></p>
+            {% for category in categorys %}
+            <a href=" ?category={{category.id}}" class="list-group-item list-group-item-action">&nbsp;{{ category.category_name }}[{{category.language}}]</a>
+              
+            
+              {% endfor %}   
+              <a href="{% url 'userbookview' %}" class="btn btn-light btn-light ">All categories</a>
+          </div>
+          
+        </div>
+       
+    <!--
+    <div class="row justify-content-center">
+       {% if i.book_image == '/static/images/default.png' %}
+        <img src="{% static 'images/default.png' %}" style="width: 200px; height: 200px;">
+        {% else %}
+            <img src="{{ i.book_image.url }}" alt="" style="width: 200px;height:200px">
+    {% endif %}
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <p class="card-text ml-5"><b>Name</b></p>
+                <p class="card-text ml-5"><b>Username</b></p>
+                <p class="card-text ml-5"><b>Email</b></p>
+                <p class="card-text ml-5"><b>Address</b></p>
+                <p class="card-text ml-5"><b>Mobileno.</b></p>
+
+            </div>
+        <div class="col-6">
+            <p class="card-text">{{ i.book_name}}</p>
+            
+            <p class="card-text">{{i.user.username}}</p>
+            <p class="card-text">{{i.user.email}}</p>
+            <p class="card-text">{{i.user_address}}</p>
+            <p class="card-text">{{i.user_mobile}}</p>
+            --> 
+                 
+           
+            <div id='books' class="col-lg-9 mx-auto">
+               
+        {% if books %}
+                    {% for i in books %} 
+                    <div class="row mx-auto mb-3">    
+            <div class="card ed-card-shadow">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h4 class="text-center ed-head">{{i.book_name}}</h4>
+                    </div>
+                </div>
+            
+                <div class="card mx-auto mb-3" style="width: 23rem;">
+                  
+                  <img class="card-img-top" src="{{i.book_image.url}}"
+                  alt="Card image cap">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-6">
+                          <p class="card-text ml-5"><b>Bookname</b></p>
+                          <p class="card-text ml-5"><b>Author</b></p>
+                          <p class="card-text ml-5"><b>Publications</b></p>
+                          
+          
+                      </div>
+                      <div class="col-6">
+                    <p class="card-title">{{i.book_name}}</p>
+                    <p class="card-title">{{i.author}}</p>
+                    <p class="card-title">{{i.publication}}</p>
+                      </div>
+                    </div>
+
+      
+                    
+                </div>
+      
+                </div>
+       
+            
+        
+            </div>
+            
+        {% endfor %} 
+        {% else %}
+            <p>No products available..!!!</p>
+        {% endif %}
+        </div>
+   
+</div>
+
+    </div>
+
+</body>

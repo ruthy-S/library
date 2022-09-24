@@ -1,0 +1,84 @@
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8">
+        <title>Enter Product Details</title>
+        {% load static %}
+
+    {% load crispy_forms_filters %}
+        <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    </head>
+    <style>
+       body{
+        background-color: rgb(32, 61, 61);
+        color: white;
+       } 
+    </style>
+    <body>
+        <div class="container-fluid">
+            <div class="bs-example">
+                <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+                  <a href="/" class="navbar-brand" style="color:yellow;"> Library Management</a>
+                  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+            
+                  <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav">
+                      <a href="{% url 'load_adminhome' %}" class="nav-item nav-link">Home</a>
+            
+                      {% comment %} <a href="/faculty/" class="nav-item nav-link">Faculty</a> {% endcomment %}
+                      
+                      <a href="{% url 'load_book' %}" class="nav-item nav-link">add Book</a>
+                      <a href="{% url 'bookview' %}" class="nav-item nav-link">view Books</a>
+                      <a href="{% url 'load_category' %}" class="nav-item nav-link  active">add category</a>
+                      <a href="{% url 'viewcategory' %}" class="nav-item nav-link">view category</a>
+                      <a href="{% url 'viewuser' %}" class="nav-item nav-link">view Users</a>
+                      <a href="{% url 'load_issuebook' %}" class="nav-item nav-link">Issue Books</a>
+                      <a href="{% url 'load_issuedbook' %}" class="nav-item nav-link">view Issued Books</a>
+            
+                    </div>
+            
+                    <div class="navbar-nav">
+                      <a href="/aboutus" class="nav-item nav-link">About Us</a>
+                      <a href="{% url 'user_logout' %}" class="nav-item nav-link">Logout</a>
+                    </div>
+            
+            
+            
+            
+                  </div>
+                </nav>
+              </div>
+          <br><br><br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h2>Add product</h2>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <form action="{% url 'addcategory' %}" method="post">
+            {% csrf_token %}
+            
+          {{ form|crispy }}  
+             
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-info w-100">Save</button>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </form>
+    </div>
+    </body>
+    </html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>users</title>
+    <style>
+        h1
+        {
+            text-align: center;
+            color:black;
+            
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+.table 
+{
+    width:100%;
+    border-collapse:collapse;
+    
+}
+.table thead 
+{
+    background-color:black;
+    text-align:center;
+    padding: 15px;
+    
+}
+.table thead tr th 
+{
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.05px;
+    color: #FFFFFF;
+    opacity:1;
+    padding:12px 7px 0px 120px;
+    vertical-align:center;
+    border:1px solid #000000;
+    
+}
+.table tbody td{
+    background-color: #9c317a;
+    color: white;
+    text-align: center;
+}
+
+
+    </style>
+    
+</head>
+    <body>
+        <div class="container-fluid">
+            <div class="bs-example">
+                <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+                  <a href="/" class="navbar-brand" style="color:yellow;"> Library Management</a>
+                  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+            
+                  <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav">
+                      <a href="{% url 'load_adminhome' %}" class="nav-item nav-link ">Home</a>
+            
+                      {% comment %} <a href="/faculty/" class="nav-item nav-link">Faculty</a> {% endcomment %}
+                      
+                      <a href="{% url 'load_book' %}" class="nav-item nav-link">add Book</a>
+                      <a href="{% url 'bookview' %}" class="nav-item nav-link">view Books</a>
+                      <a href="{% url 'load_category' %}" class="nav-item nav-link">add category</a>
+                      <a href="{% url 'viewcategory' %}" class="nav-item nav-link ">view category</a>
+                      <a href="{% url 'viewuser' %}" class="nav-item nav-link active">view Users</a>
+                      <a href="{% url 'load_issuebook' %}" class="nav-item nav-link">Issue Books</a>
+                      <a href="{% url 'load_issuedbook' %}" class="nav-item nav-link">view Issued Books</a>
+            
+                    </div>
+            
+                    <div class="navbar-nav">
+                      <a href="/aboutus" class="nav-item nav-link">About Us</a>
+                      <a href="{% url 'user_logout' %}" class="nav-item nav-link">Logout</a>
+                    </div>
+            
+            
+            
+            
+                  </div>
+                </nav>
+              </div>
+          <br><br><br>
+        <h1>Member Details
+        </h1>
+        <div class="box-1">
+            <div class="table-container">
+        <table class="table" id="dataTable" width="100%" cellspacing="0" >
+            <thead  >
+                <tr>
+                    <th>ID</th>
+                    <th>FIRST NAME</th>
+                    <th>LASTNAME</th>
+                    <th>USERNAME</th>
+                    <th>EMAIL</th>
+                    <th>LAST LOGIN</th>
+                    <th>ACTION</th>
+
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in user %}
+                    <tr>
+                        <td>{{ i.user.id }}</td>
+                        <td>{{ i.user.first_name }}</td>
+                        <td>{{ i.user.last_name }}</td>
+                        <td>{{ i.user.username }}</td>
+                        <td>{{ i.user.email }}</td>
+                        <td>{{ i.user.last_login }}</td>
+                        <td>
+                            <a href="{% url 'deleteuser' i.user.id %}" class="btn btn-danger mt-3 w-100">REMOVE</a>
+                        </td>
+                
+                        
+                    </tr>
+                {% endfor%}
+            </tbody>
+        </table>
+            </div></div></div>
+    </body>

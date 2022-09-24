@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    {% load crispy_forms_filters %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title></title>
+    <style>
+      fieldset{
+        width: 400px;
+        height: 350px;
+        text-align: center;
+        margin-top: 100px;
+        
+      }
+     
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+   
+  <nav class="navbar navbar-expand-md navbar-dark " style="background-color: rgb(74, 72, 73);">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#"></a>
+  
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+   <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+    
+    </ul>
+   <!-- Navbar links -->
+   <div class="collapse navbar-collapse nav justify-content-end" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      
+ <!--  <ul class="nav justify-content-end">  -->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'load_home' %}" >Home</a>
+      </li>
+
+    </ul>
+
+  </div>
+            </nav>
+
+      <center>
+        <fieldset><br><br>
+      <div class="row">
+        <div class="col-md-4 col xs-12"></div>
+        <div class="col-md-4 col-sm-4 col-xs-12"><br>
+              <h2>Log in</h2>
+          </div>
+          <div class="col-md-4"></div>
+      </div>
+    <form class=""  method="post" action="{% url 'userlogin' %}">
+      
+      {% csrf_token %}
+
+      {{ form|crispy }} 
+
+      <input type="checkbox" style="margin-left: -250px;">Remember me<br><br>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+      <button type="submit" name="button" class="btn btn-primary">LOGIN</button>
+    </div>
+    
+    <div class="col-md-4"></div>
+    
+</div>
+Don't have an account?
+    <a href="{%  url 'load_signup' %}">Sign Up</a>
+    <br><br>Forget your password?
+    </form>
+        </fieldset>
+      </center>
+  </body>
+</html>

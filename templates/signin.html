@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+  {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+<title>Log in</title>
+</head>
+<style>
+  body{
+    background-color: black;
+    color: white;
+  }
+</style>
+
+ <body>
+    
+  <div class="container-fluid">
+    
+
+    <div class="bs-example">
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        <a href="/" class="navbar-brand" style="color:yellow;"> Library Management</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+          <div class="navbar-nav">
+            <a href="{% url 'load_home' %}" class="nav-item nav-link ">Home</a>
+  
+            {% comment %} <a href="/faculty/" class="nav-item nav-link">Faculty</a> {% endcomment %}
+            
+            <a href="{% url 'load_signup' %}" class="nav-item nav-link">Signup</a>
+            <a href="{% url 'load_signin' %}" class="nav-item nav-link active">Login</a>
+  
+          </div>
+  
+          <div class="navbar-nav">
+            <a href="/aboutus" class="nav-item nav-link">About Us</a>
+            <a href="contactus" class="nav-item nav-link">Contact Us</a>
+          </div>
+  
+  
+  
+  
+        </div>
+      </nav>
+    </div>
+                      
+                      <div class="container pt-5">
+                        <form method="post" action="{% url 'userlogin' %}">
+                          {% csrf_token %}"
+                        <center><br>
+                            <fieldset style=" width: 500px; height: 500px;">
+                                
+                                <label><h1>Log In</h1></label><br>
+                                <img src="{% static 'images/user.webp' %}" width="15px":height="15px">
+                                <input type="text" class="form-control" name="uname" style="width: 400px;" placeholder="username"><br><br>
+
+                                <img src="{% static 'images/key.jpg' %}" width="15px":height="15px">
+                                <input type="password" class="form-control" name="pswd" placeholder="password" style="width: 400px;"><br><br>
+
+                                <input type="checkbox" style="margin-left: -250px;">Remember me<br><br>
+
+                                <button type="submit" class="btn btn-primary">Submit</button><br>
+                                Don't have an account?
+                                <a href="{%  url 'load_signup' %}">Sign Up</a>
+                                <br><br>Forget your password?
+                                </fieldset>
+                                    </center>
+                        </form>      
+    <!--<input type="text" style="width: 400px;" ><br>
+    <input type="text" style="width: 400px;">-->
+    
+    </body>

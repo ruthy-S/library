@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>product</title>
+</head>
+<style>
+    body{
+        background-color: rgb(32, 78, 78);
+        color: white;
+    }
+</style>
+    <body>
+        <div class="container-fluid">
+            <div class="bs-example">
+                <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+                  <a href="/" class="navbar-brand" style="color:yellow;"> Library Management</a>
+                  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+            
+                  <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav">
+                      <a href="{% url 'load_adminhome' %}" class="nav-item nav-link ">Home</a>
+            
+                      {% comment %} <a href="/faculty/" class="nav-item nav-link">Faculty</a> {% endcomment %}
+                      
+                      <a href="{% url 'load_book' %}" class="nav-item nav-link  active">add Book</a>
+                      <a href="{% url 'bookview' %}" class="nav-item nav-link">view Books</a>
+                      <a href="{% url 'load_category' %}" class="nav-item nav-link">add category</a>
+                      <a href="{% url 'viewcategory' %}" class="nav-item nav-link">view category</a>
+                      <a href="{% url 'viewuser' %}" class="nav-item nav-link">view Users</a>
+                      <a href="{% url 'load_issuebook' %}" class="nav-item nav-link">Issue Books</a>
+                      <a href="{% url 'load_issuedbook' %}" class="nav-item nav-link">view Issued Books</a>
+            
+                    </div>
+            
+                    <div class="navbar-nav">
+                      <a href="/aboutus" class="nav-item nav-link">About Us</a>
+                      <a href="{% url 'user_logout' %}" class="nav-item nav-link">Logout</a>
+                    </div>
+            
+            
+            
+            
+                  </div>
+                </nav>
+              </div>
+          
+              <br><br><br>
+        <center>
+            <fieldset style="width: 400px;height: 400px;">
+            <div class="container-fluid">
+        <h1>Add book</h1>
+
+        <form method="post" action="/editbookdetails/{{ books.id }}" enctype="multipart/form-data">
+
+            {% csrf_token %}
+            <div class="form-row">
+            <div class="form-group col-md-6">
+            <label>Book name:</label>
+            <input type="text" name="bname" class="form-control mt-3" value="{{ books.book_name}}">
+            </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+            <label>Book description</label>
+            <input type="text" name="description" class="form-control" value="{{ books.description}}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+            <label>Author</label>
+            <input type="text" name="author" class="form-control" value="{{books.author}}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+            <label>Publication</label>
+            <input type="text" name="publication" class="form-control " value="{{ books.publication}}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+            <label>Enter product quantity:</label>
+            <input type="number" name="quantity" class="form_control" value="{{books.quantity}}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+            <label>Enter product price:</label>
+            <input type="number" name="price" value="{{books.price}}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Category:</label>
+            <select class="form-control" name="select">
+                {% for category in categorys %}
+                <option value="{{ category.id }}">{{ books.category.category_name }}[{{books.category.language}}]</option>
+                {% endfor %}
+            </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+            <input type="file" name="file" class="form-control mt-3" accept="image/*">
+
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+            <button type="submit" class="btn btn-outline-info">submit</button>
+                </div>
+            </div>
+        </form>
+        </fieldset>
+            </div>
+        </center>
+    </body>
+  
+  
