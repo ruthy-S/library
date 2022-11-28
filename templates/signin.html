@@ -14,9 +14,314 @@
 <title>Log in</title>
 </head>
 <style>
+  /*
   body{
-    background-color: black;
+    background-image: url("https://us.123rf.com/450wm/vimvertigo/vimvertigo1603/vimvertigo160300169/54219688-composition-with-vintage-old-hardback-books-diary-fanned-pages-on-wooden-deck-table-and-red-backgrou.jpg?ver=6");
+    background-repeat: no-repeat;
+    background-size: 100% ;
+    
+  }
+  fieldset{
+    margin-top: 0px;
+    width: 500px;
+     height: 450px;
+     background-color: aliceblue;
+    border-radius: 30px;
+    margin-left: 100px;
+  }
+  form{
+    margin-top: 0px;
+  }
+  div.container{
+    margin-left: 100px;
+   
+    margin-top: 0px;
+  }
+  */
+/*
+  body{
+    background-image: url("https://wallpaperaccess.com/full/7823414.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% ;
+  }
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+  }
+  
+  .bg-img:after{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    
+    
+  }
+  
+  .content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    text-align: center;
+    padding: 60px 32px;
+    width: 400px;
+    transform: translate(-50%,-50%);
+    
+    box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
+  }
+  /*
+  .form-box {
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: auto auto;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #000;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 400px;
+    height: 550px;
+  }
+ 
+  .content header{
     color: white;
+    font-size: 33px;
+    font-weight: 600;
+    margin: 0 0 35px 0;
+    font-family: 'Montserrat',sans-serif;
+  }
+  .field{
+    position: relative;
+    height: 45px;
+    width: 100%;
+    display: flex;
+    background: rgba(255,255,255,0.94);
+  }
+  .field span{
+    color: #222;
+    width: 40px;
+    line-height: 45px;
+  }
+  .field input{
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #222;
+    font-size: 16px;
+    font-family: 'Poppins',sans-serif;
+  }
+  .space{
+    margin-top: 16px;
+  }
+  .show{
+    position: absolute;
+    right: 13px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #222;
+    display: none;
+    cursor: pointer;
+    font-family: 'Montserrat',sans-serif;
+  }
+  .pass-key:valid ~ .show{
+    display: block;
+  }
+  .pass{
+    text-align: left;
+    margin: 10px 0;
+  }
+  .pass a{
+    color: white;
+    text-decoration: none;
+    font-family: 'Poppins',sans-serif;
+  }
+  .pass:hover a{
+    text-decoration: underline;
+  }
+  .field input[type="submit"]{
+    background: #3498db;
+    border: 1px solid #2691d9;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Montserrat',sans-serif;
+  }
+  .field input[type="submit"]:hover{
+    background: #2691d9;
+  }
+  .login{
+    color: white;
+    margin: 20px 0;
+    font-family: 'Poppins',sans-serif;
+  }
+  .links{
+    display: flex;
+    cursor: pointer;
+    color: white;
+    margin: 0 0 20px 0;
+  }
+  .facebook,.instagram{
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    margin-left: 10px;
+  }
+  .facebook{
+    margin-left: 0;
+    background: #4267B2;
+    border: 1px solid #3e61a8;
+  }
+  .instagram{
+    background: #E1306C;
+    border: 1px solid #df2060;
+  }
+  .facebook:hover{
+    background: #3e61a8;
+  }
+  .instagram:hover{
+    background: #df2060;
+  }
+  .links i{
+    font-size: 17px;
+  }
+  i span{
+    margin-left: 8px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-family: 'Poppins',sans-serif;
+  }
+  .signup{
+    font-size: 15px;
+    color: white;
+    font-family: 'Poppins',sans-serif;
+  }
+  .signup a{
+    color: #3498db;
+    text-decoration: none;
+  }
+  .signup a:hover{
+    text-decoration: underline;
+  }
+  .form-box input {
+   font-size: 20px;
+    font-family: poppins;
+  }
+  body {
+    font-family: poppins;
+    font-size: 16px;
+    color: #fff;
+  } */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: poppins;
+    font-size: 16px;
+    color: #fff;
+  }
+  .form-box {
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: auto auto;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #000;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 500px;
+    height: 430px;
+  }
+  .form-box:before {
+    background-image: url("https://www.penrhyn.com/images/practice-groups/08-B-professional-services.jpg");
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    display: block;
+    filter: blur(2px);
+  }
+  .form-box .header-text {
+    font-size: 32px;
+    font-weight: 600;
+    padding-bottom: 30px;
+    text-align: center;
+  }
+  .form-box input {
+    margin: 10px 0px;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 18px;
+    font-family: poppins;
+  }
+  .form-box input[type=checkbox] {
+    display: none;
+  }
+  .form-box label {
+    position: relative;
+    margin-left: 5px;
+    margin-right: 10px;
+    top: 5px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  .form-box label:before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    background-color: #ddd;
+  }
+  .form-box input[type=checkbox]:checked+label:before {
+    content: "\2713";
+    font-size: 20px;
+    color: #000;
+    text-align: center;
+    line-height: 20px;
+  }
+  .form-box span {
+    font-size: 14px;
+  }
+  .form-box button {
+    background-color: deepskyblue;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    padding: 10px;
+    margin: 20px 0px;
+  }
+  span a {
+    color: #BBB;
   }
 </style>
 
@@ -44,8 +349,8 @@
           </div>
   
           <div class="navbar-nav">
-            <a href="/aboutus" class="nav-item nav-link">About Us</a>
-            <a href="contactus" class="nav-item nav-link">Contact Us</a>
+            <a href="" class="nav-item nav-link">About Us</a>
+            <a href="" class="nav-item nav-link">Contact Us</a>
           </div>
   
   
@@ -53,31 +358,86 @@
   
         </div>
       </nav>
-    </div>
-                      
-                      <div class="container pt-5">
-                        <form method="post" action="{% url 'userlogin' %}">
-                          {% csrf_token %}"
-                        <center><br>
-                            <fieldset style=" width: 500px; height: 500px;">
-                                
-                                <label><h1>Log In</h1></label><br>
-                                <img src="{% static 'images/user.webp' %}" width="15px":height="15px">
-                                <input type="text" class="form-control" name="uname" style="width: 400px;" placeholder="username"><br><br>
+    </div><br><br><br><br><br>
+    <form method="post" action="{% url 'userlogin' %}" >
+      {% csrf_token %}
 
-                                <img src="{% static 'images/key.jpg' %}" width="15px":height="15px">
-                                <input type="password" class="form-control" name="pswd" placeholder="password" style="width: 400px;"><br><br>
+    <div class="form-box">
+      <div class="header-text">
+        Login Form
+      </div>
+      
+      <input type="text" placeholder="Username"  id="uname"  name="uname" required>
+      <input type="password" class="form-control" name="pswd" placeholder="password" required  >
+      
+        <input id="terms" type="checkbox"> <label for="terms"></label><span>Don't have an account? <a href="{%  url 'load_signup' %}">Signup</a></span> 
+        <button>LOGINS</button>
+    </div></form>
+<!--
+    <form method="post" action="{% url 'userlogin' %}">
+      {% csrf_token %}
+    <div class="form-box">
+    <div class="bg-img">
+      <div class="content">
+         <header>Login Form</header>
+         <form action="#">
+            <div class="field">
+               <span class="fa fa-user"></span>
+               <input type="text" class="form-control" name="uname" style="width: 400px;" placeholder="username">
+            </div>
+            <div class="field space">
+               <span class="fa fa-lock"></span>
+               <input type="password" class="form-control" name="pswd" placeholder="password"  style="width: 400px;"><br>>
+               <span class="show">SHOW</span>
+            </div>
+            <div class="pass">
+               <a href="#">Forgot Password?</a>
+            </div>
+            <div class="field">
+               <input type="submit" value="LOGIN">
+            </div>
+         </form>
+         <div class="login">
+            Or login with
+         </div>
+         <div class="links">
+            <div class="facebook">
+               <i class="fab fa-facebook-f"><span>Facebook</span></i>
+            </div>
+            <div class="instagram">
+               <i class="fab fa-instagram"><span>Instagram</span></i>
+            </div>
+         </div>
+         <div class="signup">
+            Don't have account?
+            <a href="{%  url 'load_signup' %}">Signup Now</a>
+         </div>
+      </div>
+   </div></div></form>-->
 
-                                <input type="checkbox" style="margin-left: -250px;">Remember me<br><br>
+     <!--                
+    <div class="container ">
+      <form method="post" action="{% url 'userlogin' %}">
+        {% csrf_token %}
+      <center>
+          <fieldset >
+              
+              <label><h1>Log In</h1></label><br>
+              <img src="{% static 'images/user.webp' %}" width="15px":height="15px">
+              <input type="text" class="form-control" name="uname" style="width: 400px;" placeholder="username"><br><br>
 
-                                <button type="submit" class="btn btn-primary">Submit</button><br>
-                                Don't have an account?
-                                <a href="{%  url 'load_signup' %}">Sign Up</a>
-                                <br><br>Forget your password?
-                                </fieldset>
-                                    </center>
-                        </form>      
-    <!--<input type="text" style="width: 400px;" ><br>
-    <input type="text" style="width: 400px;">-->
-    
-    </body>
+              <img src="{% static 'images/key.jpg' %}" width="15px":height="15px">
+              <input type="password" class="form-control" name="pswd" placeholder="password"  style="width: 400px;"><br><br>
+
+              <input type="checkbox" style="margin-left: -250px;">Remember me<br><br>
+
+              <button type="submit" class="btn btn-info">Submit</button><br>
+              Don't have an account?
+              <a href="{%  url 'load_signup' %}">Sign Up</a>
+              <br><br><a style="color: rgb(56, 56, 153);" href=""> forgot your password? </a>
+              </fieldset>
+            </center> 
+               
+      </form> </div>
+      --> 
+           

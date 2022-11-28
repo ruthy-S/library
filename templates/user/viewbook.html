@@ -11,55 +11,75 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
 
-<title>Ecommerce</title>
+<title>Library</title>
 </head>
+<style>
+  .sidebar{
+    position:fixed;
+    left:0;
+    width:260px;
+    height:100%;
+    background:#042331;
+  }
+  .sidebar ul a{
+    display:block;
+    height:100%;
+    width:100%;
+    
+    font-size:20px;
+    color:rgb(232, 221, 221);
+    margin-top: 40px;
+   
+  }
+  .ul li{
+    margin-top: 200px;
+  
+  }
+  nav{
+    background-color: #042331;
+  }
+  body{
+    background-color: rgb(13, 46, 46);
+    background-image: url("https://images.hdqwalls.com/download/purple-abstract-hd-4k-hk-1920x1080.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
 <body>
     
   <div class="container-fluid">
     
 
     <div class="bs-example">
-      <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+      <nav class="navbar navbar-expand-md  fixed-top">
         <a href="/" class="navbar-brand" style="color:yellow;"> Library Management</a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
-  
-        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-          <div class="navbar-nav">
-            <a href="{% url 'userhomepage' %}" class="nav-item nav-link ">Home</a>
-  
-            {% comment %} <a href="/faculty/" class="nav-item nav-link">Faculty</a> {% endcomment %}
-            
-            
-            <a href="{% url 'userbookview' %}" class="nav-item nav-link active">view available Books</a>
-            
-            <a href="{% url 'profile' %}" class="nav-item nav-link">Profile</a>
-            <a href="{% url 'load_userissuedbook' %}" class="nav-item nav-link">view Issued Books</a>
-  
-          </div>
-  
-          <div class="navbar-nav">
-            <a href="/aboutus" class="nav-item nav-link">About Us</a>
-            <a href="{% url 'user_logout' %}" class="nav-item nav-link">Logout</a>
-          </div>
-  
-  
-  
-  
+
         </div>
       </nav>
     </div>
-
+    <br><br>
+    <div class="sidebar">
+      
+      <ul >
+      <li><a href="{% url 'userhomepage' %}"><i class="fas fa-qrcode"></i> Dashboard</a></li>
+      <li><a href="{% url 'userbookview' %}"><i class="fas fa-image"></i> view available Books</a></li>
+      <li><a href="{% url 'profile' %}"><i class="fas fa-fa fa-user"></i> Profile</a></li>
+      <li><a href="{% url 'load_userissuedbook' %}"><i class="fa fa-book"></i> view Issued Books</a></li>
+      <li><a href="{% url 'user_logout' %}"><i class="fa fa-user"></i> Log Out</a></li>
+      </ul>
+    </div>
     <br>
-    <h4 class="text-center ed-head">Books in Library</h4>
+    <h4 class="text-center ed-head" style="color: white;">Books in Library</h4>
     
     <hr class="my-4">
 
-    <div class="row">
-        <div class="col-lg-3 mx-auto">
-          <div class="list-group">
-            <p><b>Categorylist</b></p>
+    <div class="row" >
+        <div class="col-lg-4 mx-auto">
+          <div class="list-group" style="background-color: black;text-align:center;">
+            <p style="color: white; "><b>Categorylist</b></p>
             {% for category in categorys %}
             <a href=" ?category={{category.id}}" class="list-group-item list-group-item-action">&nbsp;{{ category.category_name }}[{{category.language}}]</a>
               
@@ -67,55 +87,30 @@
               {% endfor %}   
               <a href="{% url 'userbookview' %}" class="btn btn-light btn-light ">All categories</a>
           </div>
-          
+          <br><br><br><br><br> 
         </div>
-
-        
-       
-    <!--
-    <div class="row justify-content-center">
-       {% if i.book_image == '/static/images/default.png' %}
-        <img src="{% static 'images/default.png' %}" style="width: 200px; height: 200px;">
-        {% else %}
-            <img src="{{ i.book_image.url }}" alt="" style="width: 200px;height:200px">
-    {% endif %}
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-6">
-                <p class="card-text ml-5"><b>Name</b></p>
-                <p class="card-text ml-5"><b>Username</b></p>
-                <p class="card-text ml-5"><b>Email</b></p>
-                <p class="card-text ml-5"><b>Address</b></p>
-                <p class="card-text ml-5"><b>Mobileno.</b></p>
-
-            </div>
-        <div class="col-6">
-            <p class="card-text">{{ i.book_name}}</p>
-            
-            <p class="card-text">{{i.user.username}}</p>
-            <p class="card-text">{{i.user.email}}</p>
-            <p class="card-text">{{i.user_address}}</p>
-            <p class="card-text">{{i.user_mobile}}</p>
-            --> 
-                 
+             
            
             <div id='books' class="col-lg-9 mx-auto">
                
         
-                    {% for i in books %} 
-                    <div class="row mx-auto mb-3">    
+                    
+                    <div class="row mx-auto ">  
+                      {% for i in books %} 
+
+                      <div class="card mx-auto mb-3" style="width: 23rem;">
             <div class="card ed-card-shadow">
                 <div class="card-header">
                     <div class="card-title">
                         <h4 class="text-center ed-head">{{i.book_name}}</h4>
+                        <img class="card-img-top" src="{{i.book_image.url}}"
+                  alt="Card image cap" height="300px">
                     </div>
                 </div>
             
-                <div class="card mx-auto mb-3" style="width: 23rem;">
+                
                   
-                  <img class="card-img-top" src="{{i.book_image.url}}"
-                  alt="Card image cap">
+                  
                   <div class="card-body">
                     <div class="row">
                       <div class="col-6">

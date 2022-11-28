@@ -6,10 +6,10 @@ from datetime import datetime,timedelta
 # Create your models here.
 class Usermember(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
-    user_address=models.CharField(max_length=255)
-    user_mobile=models.CharField(max_length=255)
-    user_gender=models.CharField(max_length=255)
-    user_designation=models.CharField(max_length=255)
+    user_address=models.CharField(max_length=255,null=True)
+    user_mobile=models.CharField(max_length=255,null=True)
+    user_gender=models.CharField(max_length=255,null=True)
+    user_designation=models.CharField(max_length=255,null=True)
     user_photo=models.ImageField(upload_to='image/user')
 
     def __str__(self):
@@ -34,11 +34,11 @@ class book(models.Model):
 class requestbook(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     book=models.ForeignKey(book,on_delete=models.CASCADE,null=True)
-    issuedays=models.IntegerField(default=30)
+    issuedays=models.IntegerField(default=15)
 
 
 def get_expiry():
-    return datetime.today() + timedelta(days=30)
+    return datetime.today() + timedelta(days=15)
 class issuebook(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     book=models.ForeignKey(book,on_delete=models.CASCADE,null=True)

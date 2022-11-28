@@ -11,12 +11,12 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 <style>
   .footer {
-  margin-top: auto;
-  margin-left:0 ;
-  background-color: black;
-  color: white;
-  
-}
+    margin-top: auto;
+    margin-left:0 ;
+    background-color: black;
+    color: white;
+    
+  }
 .footer-row
 {
   display: flex;
@@ -41,15 +41,39 @@ fieldset{
   height: 300px;
   background-color: blueviolet;
 }
+.sidebar{
+  position:fixed;
+  left:0;
+  width:260px;
+  height:100%;
+  background:#042331;
+  
+}
+.sidebar ul a{
+  display:block;
+  height:100%;
+  width:100%;
+  
+  font-size:20px;
+  color:rgb(232, 221, 221);
+  
+  margin-top: 30px;
+ 
+}
+.ul li{
+  margin-top: 200px;
 
-body{
-  background-image: url("https://sreesaradavidyalaya.edu.in/wp-content/uploads/2020/12/l1.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
+}
+nav{
+  background-color: #042331;
+}
+img{
+  margin-left: 270px;
+ 
 }
 </style>
 
-<title>Ecommerce</title>
+<title>adminhomepage</title>
 </head>
 <body>
 
@@ -57,48 +81,42 @@ body{
     
 
     <div class="bs-example">
-      <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+      <nav class="navbar navbar-expand-md  fixed-top">
         <a href="/" class="navbar-brand" style="color:yellow;"> Library Management</a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
-  
-        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-          <div class="navbar-nav">
-            <a href="{% url 'load_adminhome' %}" class="nav-item nav-link active">Home</a>
-  
-            {% comment %} <a href="/faculty/" class="nav-item nav-link">Faculty</a> {% endcomment %}
-            
-            <a href="{% url 'load_book' %}" class="nav-item nav-link">add Book</a>
-            <a href="{% url 'bookview' %}" class="nav-item nav-link">view Books</a>
-            <a href="{% url 'load_category' %}" class="nav-item nav-link">add category</a>
-            <a href="{% url 'viewcategory' %}" class="nav-item nav-link">view category</a>
-            <a href="{% url 'viewuser' %}" class="nav-item nav-link">view Users</a>
-            <a href="{% url 'load_issuebook' %}" class="nav-item nav-link">Issue Books</a>
-            <a href="{% url 'load_issuedbook' %}" class="nav-item nav-link">view Issued Books</a>
-  
-          </div>
-  
-          <div class="navbar-nav">
-            <a href="/aboutus" class="nav-item nav-link">About Us</a>
-            <a href="{% url 'user_logout' %}" class="nav-item nav-link">Logout</a>
-          </div>
-  
-  
-  
-  
         </div>
+
+       
       </nav>
     </div>
-
+    <br><br>
+    <div class="sidebar">
+      
+      <ul >
+      <li><a href="{% url 'load_adminhome' %}"><i class="fas fa-qrcode "></i> Dashboard</a></li>
+      <li><a href="{% url 'load_book' %}"><i class="fas fa-book-open"></i> add Book</a></li>
+      <li><a href="{% url 'bookview' %}"><i class="fa-solid fa-image "></i> view Books</a></li>
+      <li><a href="{% url 'load_category' %}"> <i class="fas fa-address-card"></i> add category</a></li>
+      <li><a href="{% url 'viewcategory' %}"><i class="fa fa-list-alt"></i> view category</a></li>
+      <li><a href="{% url 'viewuser' %}"><i class="fa-solid  fa-user"></i> view Users</a></li>
+      <li><a href="{% url 'load_issuebook' %}"><i class="fa-solid  fa-ticket"></i> Issue Books</a></li>
+      <li><a href="{% url 'load_issuedbook' %}"><i class="fa fa-book"></i> view Issued Books</a></li>
+      <li><a href="{% url 'user_logout' %}"><i class="fa fa-user"></i> Log Out</a></li>
+      </ul>
+    </div>
     <br>
+        
+            <br><br>
+    <br><br><br>
     
     {% for  msg in messages %}
-    <h2 style="color: blueviolet; text-align:center;">{{ msg }}</h2>
+    <h2 style="color: rgb(12, 12, 12); text-align:center;">{{ msg }}</h2>
    
     {% endfor %} 
     
-
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQvuDG7t-C3lun_18heC1Lc38p9wNsm-S0lw&usqp=CAU" height="80%" width="80%">
     
 
     

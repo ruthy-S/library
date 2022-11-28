@@ -1,4 +1,4 @@
-
+import random
 from datetime import date
 import os
 from . import forms,models
@@ -10,13 +10,33 @@ from django.contrib.auth.models import User,auth
 from django.contrib.auth import authenticate,login,logout
 from libraryapp.models import Usermember,Category,book,requestbook,issuebook
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+#from libraryapp.models import Mail
+from django.core.mail import send_mail
 
 # Create your views here.
 def load_home(request):
     return render(request,'home.html')
 
 def load_signup(request):
-    return render(request,'signup.html')
+    characters = list('abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()?><:;')
+
+    if request.GET.get('uppercase'):
+        characters.extend(list('ABCDEFGHIJKLMNOPQRSTUVWXYZ'))
+
+    if request.GET.get('numbers'):
+        characters.extend(list('0123456789'))
+
+    if request.GET.get('special'):
+        characters.extend(list('!@#$%^&*()?><:;'))
+
+    thepassword = ''
+    for x in range(8):
+        thepassword += random.choice(characters)
+    
+    #return render(request, 'password.html', {"password":thepassword})
+    us=Usermember.objects.all()
+    return render(request,'signup.html',{'us':us,"password":thepassword})
 
 def load_signin(request):
     return render(request,'signin.html')
@@ -88,7 +108,10 @@ def signup(request):
                 messages.info(request, 'Username not available..' )
                 return redirect('signup')
 
-                      
+            elif User.objects.filter(email=email).exists():
+                messages.info(request, 'Email not available..')
+                print("email not availble")
+                return redirect('signup')       
             
 
             else:
@@ -97,7 +120,14 @@ def signup(request):
                 u=User.objects.get(id=user.id)
                 member=Usermember(user_address=address,user_gender=gender,user_mobile=mobile,user_designation=des,user=u,user_photo=photo)
                 member.save()
-                return redirect('load_home')
+                
+                messages.success(request, 'successfully registered' )
+                subject = 'Library management system'
+        
+                message ='Dear user,\n your password is....' f'{pswd}'
+                recipient = request.POST['email']    #  recipient =request.POST["inputTagName"]
+                send_mail(subject,message,settings.EMAIL_HOST_USER,[recipient] ,fail_silently=False)
+                return redirect('load_signup')
     return render(request,'signup.html')
 
 
@@ -224,7 +254,7 @@ def editbookdetails(request,pk):
         
         books.save()
         print(cat1)
-        return redirect('load_book')
+        return redirect('bookview')
     return render(request,'admin/viewbook.html')
 
 @login_required(login_url='login')
@@ -366,9 +396,15 @@ def approvebook(request,pk):
                              user_id=reqbooks.user_id)
         issuebooks.save()
         reqbooks.delete()
+        
+        q=book.objects.get(id=reqbooks.book_id)
+        q.quantity=q.quantity-1
+        q.save()
+             
         return redirect('load_issuedbook')
     return render(request,'admin/viewissuebook.html')
 
+#admin view
 def load_issuedbook(request):
 #    issuebooks=issuebook.objects.all()
 #    return render(request,'admin/viewissuebook.html',{'issuebooks':issuebooks})
@@ -382,8 +418,8 @@ def load_issuedbook(request):
         print(date.today())
         d=days.days
         fine=0
-        if d>30:
-            day=d-30
+        if d>15:
+            day=d-15
             fine=day*10
 
 
@@ -399,7 +435,7 @@ def load_issuedbook(request):
 
 
 
-
+#user view
 def load_userissuedbook(request):
 #    if 'uid' in request.session:   
 #        issuebooks=issuebook.objects.filter(user=request.user)
@@ -414,10 +450,9 @@ def load_userissuedbook(request):
         print(date.today())
         d=days.days
         fine=0
-        if d>30:
-            day=d-30
+        if d>15:
+            day=d-15
             fine=day*10
-
 
         books=list(book.objects.filter(id=ib.book_id))
         user=list(User.objects.filter(id=ib.user_id))
@@ -431,7 +466,7 @@ def load_userissuedbook(request):
 
 
 
-
+"""
 ##############################################################
     issuedbooks=issuebook.objects.filter(user=request.user)
     li=[]
@@ -458,11 +493,19 @@ def load_userissuedbook(request):
 
     return render(request,'issuedbook.html',{'li':li}) 
 
-
+"""
 def returnbook(request,pk):
     
     isbooks=issuebook.objects.get(user_id=pk)
+   # reqbooks=requestbook.objects.get(id=pk)
+    
     isbooks.delete()
+    q=book.objects.get(id=isbooks.book_id)
+    q.quantity=q.quantity+1
+    q.save()
+    
     return redirect('load_issuedbook')
+
+    
 
 #########################

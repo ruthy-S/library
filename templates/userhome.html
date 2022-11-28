@@ -42,6 +42,34 @@ fieldset{
   background-color: blueviolet;
 }
 
+
+.sidebar{
+  position:fixed;
+  left:0;
+  width:260px;
+  height:100%;
+  background:#042331;
+}
+.sidebar ul a{
+  display:block;
+  height:100%;
+  width:100%;
+  
+  font-size:20px;
+  color:rgb(232, 221, 221);
+  margin-top: 40px;
+ 
+}
+.ul li{
+  margin-top: 200px;
+
+}
+nav{
+  background-color: #042331;
+}
+img{
+  margin-left: 200px;
+}
 body{
   background-image: url("https://i.ytimg.com/vi/vXipwZ8PKmQ/maxresdefault.jpg");
   background-repeat: no-repeat;
@@ -57,39 +85,30 @@ body{
     
 
     <div class="bs-example">
-      <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+      <nav class="navbar navbar-expand-md  fixed-top">
         <a href="/" class="navbar-brand" style="color:yellow;"> Library Management</a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
-  
-        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-          <div class="navbar-nav">
-            <a href="{% url 'userhomepage' %}" class="nav-item nav-link active">Home</a>
-  
-            {% comment %} <a href="/faculty/" class="nav-item nav-link">Faculty</a> {% endcomment %}
-            
-            
-            <a href="{% url 'userbookview' %}" class="nav-item nav-link">view available Books</a>
-            
-            <a href="{% url 'profile' %}" class="nav-item nav-link">Profile</a>
-            <a href="{% url 'load_userissuedbook' %}" class="nav-item nav-link">view Issued Books</a>
-  
-          </div>
-  
-          <div class="navbar-nav">
-            <a href="/aboutus" class="nav-item nav-link">About Us</a>
-            <a href="{% url 'user_logout' %}" class="nav-item nav-link">Logout</a>
-          </div>
-  
-  
-  
+      
   
         </div>
       </nav>
     </div>
-
-    <br><br><br>
+    <br><br>
+    <div class="sidebar">
+      
+      <ul >
+      <li><a href="{% url 'userhomepage' %}"><i class="fas fa-qrcode"></i> Dashboard</a></li>
+      <li><a href="{% url 'userbookview' %}"><i class="fas fa-image"></i> view available Books</a></li>
+      <li><a href="{% url 'profile' %}"><i class="fas fa-fa fa-user"></i> Profile</a></li>
+      <li><a href="{% url 'load_userissuedbook' %}"><i class="fa fa-book"></i> view Issued Books</a></li>
+      <li><a href="{% url 'user_logout' %}"><i class="fa fa-user"></i> Log Out</a></li>
+      </ul>
+    </div>
+    
+   
+<br><br><br>
     
     {% for  msg in messages %}
     <h2 style="color: blueviolet; text-align:center;">{{ msg }}</h2>

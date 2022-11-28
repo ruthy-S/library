@@ -1,19 +1,66 @@
 <!DOCTYPE html>
 <head>
+    {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
 
     <title>users</title>
     <style>
         h1
         {
+          font-weight: bold;
             text-align: center;
-            color: blue;
+            color: white;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .sidebar{
+            position:fixed;
+            left:0;
+            width:250px;
+            height:100%;
+            background:#031720;
+          }
+          .sidebar ul a{
+            display:block;
+            
+            width:100%;
+            
+            font-size:20px;
+            color:rgb(232, 221, 221);
+            margin-top: 30px;
+           
+          }
+          .ul li{
+            margin-top: 200px;
+          
+          }
+          nav{
+            background-color: #042331;
+          }
+          table{
+            width: 80%;
+            margin-left: 280px;
+            
+        }
+        tbody{
+            background-color: white;
+            color: #042331;
+            font-style: italic;
+            font-weight: bold;
+            opacity:0.8
+        }
+        body{
+            background-color: rgb(20, 48, 48);
+            background-image: url("https://www.rushdah-ir.com/wp-content/uploads/2018/03/sliders1-1.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
         }
     </style>
     
@@ -21,45 +68,36 @@
     <body>
         <div class="container-fluid">
             <div class="bs-example">
-                <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+                <nav class="navbar navbar-expand-md  fixed-top">
                   <a href="/" class="navbar-brand" style="color:yellow;"> Library Management</a>
                   <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                   </button>
             
-                  <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav">
-                      <a href="{% url 'load_adminhome' %}" class="nav-item nav-link ">Home</a>
-            
-                      {% comment %} <a href="/faculty/" class="nav-item nav-link">Faculty</a> {% endcomment %}
-                      
-                      <a href="{% url 'load_book' %}" class="nav-item nav-link">add Book</a>
-                      <a href="{% url 'bookview' %}" class="nav-item nav-link">view Books</a>
-                      <a href="{% url 'load_category' %}" class="nav-item nav-link">add category</a>
-                      <a href="{% url 'viewcategory' %}" class="nav-item nav-link ">view category</a>
-                      <a href="{% url 'viewuser' %}" class="nav-item nav-link ">view Users</a>
-                      <a href="{% url 'load_issuebook' %}" class="nav-item nav-link ">Issue Books</a>
-                      <a href="{% url 'load_issuedbook' %}" class="nav-item nav-link active">view Issued Books</a>
-            
-                    </div>
-            
-                    <div class="navbar-nav">
-                      <a href="/aboutus" class="nav-item nav-link">About Us</a>
-                      <a href="{% url 'user_logout' %}" class="nav-item nav-link">Logout</a>
-                    </div>
-            
-            
-            
-            
                   </div>
                 </nav>
               </div>
-          <br><br><br>
-        <h1>Issued books Details...
-        </h1>
-        <h2>approved books</h2>
-        <table class="table table-striped table-bordered table-sm">
-            <thead style="background-color:rgb(205, 107, 107) ;" >
+          <br><br><div class="sidebar">
+        
+            <ul >
+              <li><a href="{% url 'load_adminhome' %}"><i class="fas fa-qrcode "></i> Dashboard</a></li>
+              <li><a href="{% url 'load_book' %}"><i class="fas fa-book-open"></i> add Book</a></li>
+              <li><a href="{% url 'bookview' %}"><i class="fa-solid fa-image "></i> view Books</a></li>
+              <li><a href="{% url 'load_category' %}"> <i class="fas fa-address-card"></i> add category</a></li>
+              <li><a href="{% url 'viewcategory' %}"><i class="fa fa-list-alt"></i> view category</a></li>
+              <li><a href="{% url 'viewuser' %}"><i class="fa-solid  fa-user"></i> view Users</a></li>
+              <li><a href="{% url 'load_issuebook' %}"><i class="fa-solid  fa-ticket"></i> Issue Books</a></li>
+              <li><a href="{% url 'load_issuedbook' %}"><i class="fa fa-book"></i> view Issued Books</a></li>
+              <li><a href="{% url 'user_logout' %}"><i class="fa fa-user"></i> Log Out</a></li>
+            </ul>
+          </div>
+          
+          <br><br>
+        <h1>Issued books Details / Approved books...
+        </h1><br>
+        
+        <table >
+            <thead style="background-color:rgb(54, 5, 38) ;color:white;height:50px; " >
                 <tr>
                     <th>USERNAME</th>
                     
@@ -90,9 +128,9 @@
                         <td>{{ i.3 }}</td>
                         <td>{{ i.4 }}</td>
                         <td>{{ i.5 }}</td>
-                        <td>{{ i.6 }}</td>
+                        <td>₹ {{ i.6 }}</td>
                         <td>
-                            <a href="{% url 'returnbook' i.1 %}"  onclick=hidden class="btn btn-danger mt-3 w-100">RETURN</a>
+                            <a href="{% url 'returnbook' i.1 %}"  onclick=hidden class="btn btn-danger mt-3 w-100" style="opacity:1">RETURN</a>
                         </td>
                         
                 

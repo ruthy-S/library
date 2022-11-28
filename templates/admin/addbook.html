@@ -1,118 +1,111 @@
 <!DOCTYPE html>
 <head>
+    {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
-    <title>product</title>
+    <title>add book</title>
 </head>
 <style>
-    .form-box {
-        position:relative; 
-        left:200px; 
-        top: -150px;
-        
-        right: -150px;
-        margin-top: 200px;
-        color:white;
-        background-color: rgb(62, 123, 123); 
-        
-      }
-      .form-box form input{
-        width:100%;
-        height:30px;
-        margin-bottom:10px;
-        border: 1px solid #000;
-        
-        
-        
-      }
-      .form-box form button{
-        width:100px;
-        height:30px;
-        border:none;
-        background-color:rgb(11, 205, 69);
-        font-size:16px;
-        color:#fff;
-        font-family:Lato;
-        margin-left:300px;
-        border-radius: 25px;
-      }
-      
-      
-      .form-box form label{
-       font-family: Georgia, "Times New Roman", Times, serif;
-       font-size: 20px;
-       color:rgb(17, 16, 16);
-       height: 40px;
-       width: 50%;
-       clear: both;
-       
-      
-      }
+   form{
+    margin-left: 400px;
+    width: 100%;
+   }
+   
+   form input{
+    width: 100%;
+   }
      
       .container{
         text-align: center;
+        margin-left: 500px;
         
       }
       body{
-        background-color: rgb(62, 123, 123);
+        background-color: rgb(25, 61, 61);
         color: white;
+      }
+      .sidebar{
+        position:fixed;
+        left:0;
+        width:260px;
+        height:100%;
+        background:#042331;
+        
+      }
+      .sidebar ul a{
+        display:block;
+        height:100%;
+        width:100%;
+        
+        font-size:20px;
+        color:rgb(232, 221, 221);
+        
+        margin-top: 30px;
+       
+      }
+      .ul li{
+        margin-top: 200px;
+      
+      }
+      nav{
+        background-color: #042331;
+      }
+      .btn{
+        color: white;
+        width: 100%;
+      }
+      .form h1{
+        color: black;
+
       }
       
 </style>
     <body>
         
-            <fieldset >
+            
             <div class="container-fluid">
                 <div class="bs-example">
-                    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+                    <nav class="navbar navbar-expand-md  fixed-top">
                       <a href="/" class="navbar-brand" style="color:yellow;"> Library Management</a>
                       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                       </button>
                 
-                      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav">
-                          <a href="{% url 'load_adminhome' %}" class="nav-item nav-link ">Home</a>
-                
-                          {% comment %} <a href="/faculty/" class="nav-item nav-link">Faculty</a> {% endcomment %}
-                          
-                          <a href="{% url 'load_book' %}" class="nav-item nav-link  active">add Book</a>
-                          <a href="{% url 'bookview' %}" class="nav-item nav-link">view Books</a>
-                          <a href="{% url 'load_category' %}" class="nav-item nav-link">add category</a>
-                          <a href="{% url 'viewcategory' %}" class="nav-item nav-link">view category</a>
-                          <a href="{% url 'viewuser' %}" class="nav-item nav-link">view Users</a>
-                          <a href="{% url 'load_issuebook' %}" class="nav-item nav-link">Issue Books</a>
-                          <a href="{% url 'load_issuedbook' %}" class="nav-item nav-link">view Issued Books</a>
-                
-                        </div>
-                
-                        <div class="navbar-nav">
-                          <a href="/aboutus" class="nav-item nav-link">About Us</a>
-                          <a href="{% url 'user_logout' %}" class="nav-item nav-link">Logout</a>
-                        </div>
-                
-                
-                
-                
                       </div>
                     </nav>
                   </div>
-              
-                  <br><br><br>
-                  <div class="bg-img">
-                    <div class="form-box">
-                    <div class="wrapper">
+                  <br><br>
+                  <div class="sidebar">
+                    
+                    <ul >
+                    <li><a href="{% url 'load_adminhome' %}"><i class="fas fa-qrcode "></i> Dashboard</a></li>
+                    <li><a href="{% url 'load_book' %}"><i class="fas fa-book-open"></i> add Book</a></li>
+                    <li><a href="{% url 'bookview' %}"><i class="fa-solid fa-image "></i> view Books</a></li>
+                    <li><a href="{% url 'load_category' %}"> <i class="fas fa-address-card"></i> add category</a></li>
+                    <li><a href="{% url 'viewcategory' %}"><i class="fa fa-list-alt"></i> view category</a></li>
+                    <li><a href="{% url 'viewuser' %}"><i class="fa-solid  fa-user"></i> view Users</a></li>
+                    <li><a href="{% url 'load_issuebook' %}"><i class="fa-solid  fa-ticket"></i> Issue Books</a></li>
+                    <li><a href="{% url 'load_issuedbook' %}"><i class="fa fa-book"></i> view Issued Books</a></li>
+                    <li><a href="{% url 'user_logout' %}"><i class="fa fa-user"></i> Log Out</a></li>
+                    </ul>
+                  </div>
+                  <br>
+                  
                 
-        <h1 style="margin: left 200px;">Add book</h1>
+        
         <br><br>
+        <fieldset >
         <form method="post" action="{% url 'add_book' %}" enctype="multipart/form-data" style="margin: right 300px; ;">
 
             {% csrf_token %}
+            <h1 >Add book</h1><br>
             <div class="form-row">
             <div class="form-group col-md-6">
             <label>Book name:</label>
@@ -158,24 +151,24 @@
                 {% endfor %}
             </select>
                 </div>
-            </div>
+            </div><br>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Book image:</label>
             <input type="file" name="file" class="form-control mt-3" accept="image/*">
 
                 </div>
-            </div>
+            </div><br><br>
             <div class="form-row">
                 <div class="form-group col-md-6">
-            <button type="submit" class="btn btn-outline-info">submit</button>
+            <button type="submit" class="btn btn-outline-info bg-info ">submit</button>
                 </div>
-            </div>
+            </div><br><br><br>
         </form>
            
         
             </div>
-                    </div></div></div>
+                    </div>
         </fieldset>
         
     </body>

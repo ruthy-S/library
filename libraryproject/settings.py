@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'libraryproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'librarymanagement',
+        'NAME':'libraryproject',
         'USER':'root',
         'PASSWORD':'',
         'HOST':'localhost',
@@ -139,3 +139,10 @@ STATICFILES_DIRS=[
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK='bootstrap4'
+#setting Email
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True                            #Transport Layer Security
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'sruthysreenivasan2020@gmail.com'  #from email id
+EMAIL_HOST_PASSWORD = 'ohfqvqdnxmknkehg'        #App Password
